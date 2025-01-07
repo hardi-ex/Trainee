@@ -24,6 +24,7 @@ export const typeDefs = gql`
   type Mutation {
     createTask(input: TaskInput!): Task
     updateTask(id: ID!, input: TaskInput!): Task
-    deleteTask(id: ID!): Boolean
+    deleteTask(id: ID!): Task
+    markAllTasksCompleted: [Task]
   }
 `;

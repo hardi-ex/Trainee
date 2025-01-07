@@ -57,5 +57,19 @@ export const resolvers = {
       };
       return tasks[taskIndex];
     },
+    markAllTasksCompleted: () => {
+      tasks.forEach((task) => {
+        task.completed = true;
+      });
+
+      return tasks;
+    },
+    deleteTask: (_: any, { id }: { id: string }) => {
+      const taskIndex = tasks.findIndex((task) => task.id === id);
+      if (taskIndex === -1) throw new Error("Task not found");
+
+      const deletedTask = tasks.splice(taskIndex, 1)[0];
+      return deletedTask;
+    },
   },
 };
